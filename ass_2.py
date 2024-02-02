@@ -1,9 +1,99 @@
 
+def display(state):
+    for i in range(3):
+        for j in range(3):
+            if(state[i][j] != None):
+                print(state[i][j], end=" ")
+            else:
+                print(" ", end=' ')
+        print()
+
+
+class Node:
+    def __init__(self, state=None, parent=None, move=None, h=0, g=0):
+        self.state = state
+        self.parent = parent
+        self.h = h
+        self.g = g
+        self.move = move
+
+    
+class EightPuzzleProblem:
+    def __init__(self, initial_state, final_state):
+        self.initial_state = initial_state
+        self.final_state = final_state
+        
+
+    def solve(self):
+        open_list = []
+        closed_list = set()     # No duplicates
+
+        start_node = Node(state=initial_state)
+        open_list.append(start_node)
+        
+        while open_list:
+            open_list.sort(key=lambda x: x.g + x.h)     # optional
+            current_node = open_list.pop(0)
+            closed_list.add(current_node)
+
+            if(current_node.state == final_state):
+                return self.trace_path(current_node)
+            
+            next_moves = self.get_possible_moves(current_node)
+
+            for move, state in next_moves.items():
+                child_node = Node(state, current_node, move, self.calc_h(state), current_node.g + 1)
+                
+                if child_node not in closed_list:
+                    open_list.append(child_node)
+                    
+
+    def trace_path(self, node):
+        path = []
+        while node:
+            path.append((node.move, node.state))
+            node = node.parent
+
+        return list(reversed(path))
+
+    def get_possible_moves(self, node):
+        possible_states = {}
+        blank_row, blank_col = self.find_blank(node.state)
+
+        moves = [(-1, 0), (0, -1), (1, 0), (0, 1)]
+        
+        for row, col in moves:
+            new_row = blank_row + row
+            new_col = blank_col + col
+            
+            if(new_row >= 0 and new_row <= 2 and new_col >= 0 and new_col <= 2):
+                new_state = [row[:] for row in node.state]      # create a copy of node.state
+                new_state[blank_row][blank_col] = new_state[new_row][new_col]
+                new_state[new_row][new_col] = None
+
+                possible_states[(row, col)] = new_state     # key -> (row, col)  &  value -> (new_state)
+
+        return possible_states
+    
+    def find_blank(self, state):
+        for i in range(3):
+            for j in range(3):
+                if(state[i][j] == None):
+                    return i, j
+
+    def calc_h(self, state):
+        count = 0
+        for i in range(3):
+            for j in range(3):
+                if(state[i][j] != self.final_state[i][j]):
+                    count += 1
+        return count
+
+
 initial_state = [
     [2, 8, 3],
     [1, 6, 4],
     [7, None, 5]
-
 ]
 
 final_state = [
@@ -13,77 +103,10 @@ final_state = [
 
 ]
 
-
-def display(board):
-    for i in range(3):
-        for j in range(3):
-            if(board[i][j] != None):
-                print(board[i][j], end = " ")
-            else:
-                print('-', end = " ")
-
-        print()
-
-
-def h_value(current_state, final_state):
-    count = 0
-    for i in range(3):
-        for j in range(3):
-            if current_state[i][j] != final_state[i][j]:
-                count += 1
-    return count
-
-def blank_row_col(state):
-    for i in range(3):
-        for j in range(3):
-            if(state[i][j] == None):
-                return i, j
-
-
-def a_star(blank_row, blank_col, current_state, final_state):
-    move_row = [1, 0, -1, 0]
-    move_col = [0, 1, 0, -1]
-
-    if(current_state == final_state):
-        return current_state
-
-    possible_states = []
-    h_values = []
-    for i in range(4):
-        temp_state = current_state
-        temp_row = blank_row + move_row[i]
-        temp_col = blank_col + move_col[i]
-        if(temp_row >= 0 and temp_row <= 2 and temp_col >= 0 and temp_col <= 2):
-
-            temp_state[blank_row][blank_col] = temp_state[temp_row][temp_col]
-            temp_state[temp_row][temp_col] = None
-            possible_states.append(temp_state)
-            
-    
-    min_h = 9999
-    min_hindex = -1
-    for i in range(len(possible_states)):
-        h = h_value(possible_states[i], final_state)
-        if(h < min_h):
-            min_h = h
-            min_hindex = i
-        h_values.append(h)
-        
-    best_state = possible_states[min_hindex]
-    blank_row, blank_col = blank_row_col(best_state)
-
-    return a_star(blank_row, blank_col, best_state, final_state)
-
-
-state = a_star(2, 1, initial_state, final_state)
-
-display(state)
-
-
-
-
-
-
-
-
-
+solver = EightPuzzleProblem(initial_state, final_state)
+solution_path = solver.solve()
+print("Solution:")
+for move, state in solution_path:
+    print(move)
+    display(state)
+    print()
