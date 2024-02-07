@@ -1,0 +1,18 @@
+<apex:page controller="Calculator">
+    <apex:form >
+        <apex:pageBlock title="Calculator">
+            <apex:pageBlockSection >
+                Operand 1: <apex:inputText value="{!X}"/><br/>
+                Operand 2: <apex:inputText value="{!Y}"/><br/>
+                Result: <apex:outputText value="{!result}"/><br/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Add" action="{!add}"/>
+                <apex:commandButton value="Subtract" action="{!subtract}"/>
+                <apex:commandButton value="Multiply" action="{!multiply}"/>
+                <apex:commandButton value="Divide" action="{!divide}"/>
+                <apex:commandButton value="Clear" action="{!clear}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,35 @@
+public class Calculator {
+
+    public double X {get; set;} 
+    public double Y {get; set;} 
+    public double result{get; set;}
+    
+    
+    public void add(){
+        result = X + Y;
+        
+    }
+    public void subtract(){
+        result = X - Y;
+
+    }
+    public void multiply(){
+        result = X * Y;
+
+    }
+    public void divide(){
+        if(Y == 0){
+            result = null;
+        }
+        else{
+            result = X / Y;
+        }
+        
+    }
+    public void clear(){
+        X = null;
+        Y = null;
+        result = null;
+	 }
+    	
+}
