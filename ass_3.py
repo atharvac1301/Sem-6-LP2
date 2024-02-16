@@ -5,7 +5,6 @@ arr = [8,89,4,2,6,3,10,]
 def swap(a, b):
     a, b = b, a
 
-
 def selection_sort(arr):
     n = len(arr)
     

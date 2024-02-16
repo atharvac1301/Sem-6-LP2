@@ -1,4 +1,3 @@
-import time
 
 def display(state):
     for i in range(3):
@@ -23,7 +22,6 @@ class EightPuzzleProblem:
     def __init__(self, initial_state, final_state):
         self.initial_state = initial_state
         self.final_state = final_state
-        
 
     def solve(self):
         open_list = []

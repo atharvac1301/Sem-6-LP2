@@ -97,9 +97,7 @@ void Tree::inorder(Node* temp){
         inorder(temp->left);
         cout<<temp->data<<" ";
         inorder(temp->right);
-        
     }
-
 }
 
 

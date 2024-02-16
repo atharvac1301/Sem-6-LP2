@@ -1,4 +1,3 @@
-import math
 
 # n = int(input("Enter the number of Vertices: "))
 # e = int(input("Enter the number of Edges: "))
@@ -45,7 +44,6 @@ def dfs(graph, n, e):
                 stack.append(i)
     
     print("DFS Traversal:", traversed_list)
-
 
 dfs(graph, n, e)
 

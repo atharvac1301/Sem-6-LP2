@@ -46,9 +46,6 @@ responses = {
                     "Pardon me. I was unable to understand your question."
   
                 ],
-    
-        
-
 }
 
 def respond(inquiry):
@@ -81,13 +78,11 @@ print("Type 'exit' to end the conversation.\n")
 
 while True:
     user_input = input("Customer: ")
-
     if(user_input.lower() == 'exit'):
         break
     
     if(user_input.lower() == 'bye' or user_input.lower() == 'goodbye'):
         break
-    
     
     bot_response = respond(user_input)
     print("Chatbot: ",bot_response)
