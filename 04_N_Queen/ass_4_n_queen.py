@@ -15,20 +15,19 @@ def isSafe(board, row, col):
 
     # checking all squares in the given Column
     for k in range(n):
-        if(board[k][col] == 1):
+        if board[k][col] == 1:
             return False
     
     # checking all squares in the Top-Right and Top-Left Diagonals
     for k in range(1, n):        
-        if((row - k) < n and (col - k) < n and (row - k) >= 0 and (col - k) >= 0):
-            if(board[row - k][col - k] == 1):       # Top-Left
+        if all(0 <= x < n for x in [row - k, col - k]):
+            if board[row - k][col - k] == 1:    
                 return False
 
-    for k in range(1, n):    
-        if((row - k) < n and (col + k) < n and (row - k) >= 0 and (col + k) >= 0):
-            if(board[row - k][col + k] == 1):       # Top-Right
-                return False
-    
+        if all(0 <= x < n for x in [row - k, col + k]):
+            if board[row - k][col + k] == 1:
+                    return False    
+
     return True
 
 
