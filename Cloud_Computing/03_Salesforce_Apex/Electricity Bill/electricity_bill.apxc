@@ -1,0 +1,11 @@
+public class electricity_bill {
+    public Decimal unitsConsumed{ get; set;}
+    public Decimal totalBill{ get; set;}
+    
+    public void calculateBill(){
+        Decimal unitRate = 5.0;
+        
+        totalBill = unitRate * unitsConsumed;
+    }
+
+}

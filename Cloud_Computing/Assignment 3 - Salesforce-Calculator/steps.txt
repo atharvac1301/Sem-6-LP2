@@ -1,8 +1,0 @@
-Salesforce Login
-
-Settings(Setup) Icon -> Developer Console -> Workspace gets loaded
-
-create new Apex class and Visualforce Page
-
-After the code is done, click on the Visualforce page class -> Click here to open this page in Salesforce Classic -> redirects you to the salesforce page containing the VF page -> click on preview
-

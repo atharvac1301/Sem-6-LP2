@@ -3,9 +3,7 @@ from experta import KnowledgeEngine
 from experta import DefFacts
 from experta import Rule
 
-
-
-KnowledgeEngine
+from collections.abc import Mapping
 
 class MedicalExpertSystem(KnowledgeEngine):
     @DefFacts()

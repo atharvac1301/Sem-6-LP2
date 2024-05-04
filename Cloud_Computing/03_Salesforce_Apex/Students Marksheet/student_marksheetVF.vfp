@@ -1,0 +1,26 @@
+<apex:page controller="student_marksheet">
+    <apex:form>
+    	<apex:pageBlock title="Student Marksheet">
+        <apex:pageBlockSection title="Enter Marks">
+            <apex:inputText label="English Marks" value="{!englishMarks}" />
+            <apex:inputText label="Maths Marks" value="{!mathsMarks}" />
+            <apex:inputText label="Science Marks" value="{!scienceMarks}" />
+            <apex:inputText label="Social Science Marks" value="{!socialScienceMarks}" />
+            <apex:inputText label="Computers Marks" value="{!computersMarks}" />
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Grades">
+            <apex:outputText label="English Grade" value="{!englishGrade}" />
+            <apex:outputText label="Maths Grade" value="{!mathsGrade}" />
+            <apex:outputText label="Science Grade" value="{!scienceGrade}" />
+            <apex:outputText label="Social Science Grade" value="{!socialScienceGrade}" />
+            <apex:outputText label="Computers Grade" value="{!computersGrade}" />
+            <apex:outputText label="SGPA" value="{!averageGrade}" />
+            
+        </apex:pageBlockSection>
+        
+            <apex:commandButton action="{!calculateGrades}" value="Calculate Grades"/>
+        
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
+

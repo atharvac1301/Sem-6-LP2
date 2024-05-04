@@ -1,0 +1,10 @@
+public class temperature {
+    public Decimal celcius{get; set;}
+    public Decimal farenheit{get; set;}
+    
+    
+    public void convert_temp(){
+        celcius = (farenheit - 32) * 5/9;
+        celcius = celcius.setScale(2);    // Round off to 2 decimal digits
+    }
+}
