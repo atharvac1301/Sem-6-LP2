@@ -41,9 +41,11 @@ def n_queens(board, row):
     for col in range(n):
         if isSafe(board, row, col):
             board[row][col] = 1         # Place the Queen
-            n_queens(board, row+1)      # Recursion
-            board[row][col] = 0         # back-tracking    
 
+            n_queens(board, row+1)      # Recursively explore the child
+
+            board[row][col] = 0         # Upon reaching a dead-end, back-track and reset
+                                        # all the queens placed during exploration back to 0.    
 
 
 board = [[0 for i in range(n)] for j in range(n)]
