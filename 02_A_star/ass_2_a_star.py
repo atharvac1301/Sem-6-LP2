@@ -15,6 +15,7 @@ class Node:
         self.parent = parent
         self.h = h
         self.g = g
+        self.f = self.g + self.h
         self.move = move
 
     
@@ -31,7 +32,7 @@ class EightPuzzleProblem:
         open_list.append(start_node)
         
         while open_list:
-            open_list.sort(key=lambda x: x.g + x.h)     # optional
+            open_list.sort(key=lambda x: x.f)     # optional
             current_node = open_list.pop(0)
             closed_list.add(current_node)
 
@@ -117,6 +118,7 @@ solution_path = solver.solve()
 print("Solution:")
 for move, state in solution_path:
     print(move_name[move])
+    print()
     display(state)
     print()
 

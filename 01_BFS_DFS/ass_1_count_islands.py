@@ -1,4 +1,9 @@
-# Count the Number of Islands Problem
+"""
+Count the Number of Islands Problem
+0 - Water, 1 - Land
+Neighboring 1's form an Island 
+
+"""
 
 matrix = [
             [1, 1, 0, 0, 0],
@@ -10,19 +15,19 @@ matrix = [
         ]
 
 
+# To check if the cell at (i, j) can be included in the island or not
 def isSafe(matrix, i, j, visited):
     m, n = len(matrix), len(matrix[0])
 
-    if i >= 0 and i < m and j >= 0 and j < n and matrix[i][j] and (not visited[i][j]):
-        return True
-    return False
+    return i >= 0 and i < m and j >= 0 and j < n and matrix[i][j] and (not visited[i][j])
+        
+
+# add this to get the coordinates of the neighbours
+row = [-1, -1, -1, 0, 0, 1, 1, 1]
+col = [-1, 0, 1, -1, 1, -1, 0, 1]
 
 
 def BFS(matrix, visited, sx, sy):
-    
-    # add this to get the rows and columns of 8 neighbours of given cell
-    row = [-1, -1, -1, 0, 0, 1, 1, 1]
-    col = [-1, 0, 1, -1, 1, -1, 0, 1]
 
     q = []
     q.append([sx, sy])
@@ -40,10 +45,6 @@ def BFS(matrix, visited, sx, sy):
 
 
 def DFS(matrix, visited, x, y):
-    
-    # add this to get the coordinates of the neighbours
-    row = [-1, -1, -1, 0, 0, 1, 1, 1]
-    col = [-1, 0, 1, -1, 1, -1, 0, 1]
 
     visited[x][y] = True
 
