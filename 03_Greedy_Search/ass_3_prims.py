@@ -1,9 +1,9 @@
-import heapq
+import heapq  # Min-Heap
 
 def prims(graph, start):
     mst = []
     visited = []
-    edges = [(cost, start, start) for neighbor, cost in graph[start].items()]
+    edges = [(cost, start, neighbor) for neighbor, cost in graph[start].items()]
     heapq.heapify(edges)
 
     while edges:
@@ -11,19 +11,21 @@ def prims(graph, start):
         if v not in visited:
             visited.append(v)
             mst.append((u, v, cost))
-
             for neighbor, neighbor_cost in graph[v].items():
                 if neighbor not in visited:
                     heapq.heappush(edges, (neighbor_cost, v, neighbor))
 
     return mst
 
-
 def print_mst(mst):
     print("Edge\tWeight")
+    temp = []
     for edge in mst:
-        print(f"{edge[0]} - {edge[1]} \t {edge[2]}")
+        if (edge[1], edge[0]) not in temp:
+            print(f"{edge[0]} - {edge[1]} \t {edge[2]}")
 
+            temp.append((edge[0], edge[1]))
+        
 
 graph = {
     'A': {'B': 2, 'C': 3},
@@ -33,8 +35,22 @@ graph = {
     'E': {'C': 5, 'D': 1}
 }
 
+"""
+graph = {
+    0 : {1 : 4, 7 : 8},
+    1 : {0 : 4, 2 : 8, 7 : 11},
+    2 : {1 : 8, 3 : 7, 5 : 4, 8 : 2},
+    3 : {2 : 7, 4 : 9, 5 : 14},
+    4 : {3 : 9, 5 : 10},
+    5 : {2 : 4, 3 : 14, 4 : 10, 6 : 2},
+    6 : {5 : 2, 7 : 1, 8 : 6},
+    7 : {0 : 8, 1 : 11, 6 : 1, 8 : 7},
+    8 : {2 : 2, 6 : 6, 7 : 7}
+
+}
+
+"""
+
 start_node = 'A'
 mst = prims(graph, start_node)
 print_mst(mst)
-
-

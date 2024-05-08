@@ -51,7 +51,7 @@ responses = {
 def respond(inquiry):
     inquiry = inquiry.lower()
 
-    if re.search(r"\b(?:hello|hi)\b", inquiry):
+    if 'hello' in inquiry or 'hi' in inquiry:
         return random.choice(responses['greeting'])
     
     elif re.search(r"\b(?:goodbye|bye)\b", inquiry):

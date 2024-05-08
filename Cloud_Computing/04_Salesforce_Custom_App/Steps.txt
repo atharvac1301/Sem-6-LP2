@@ -1,0 +1,25 @@
+Admin Part of Salesforce
+Custom App = App that we create
+Console App = App that is already present
+
+1. Login
+2. Setup --> Quick Find Search Box --> Type "apps" (Don't press Enter) --> 
+   Build, Create --> Apps
+
+3. New --> Custom App --> Default --> Default (Select all Visible and Default checkboxes)
+4. App will be created (Go to Top Right Dropdown, change to this newly created App)
+5. Quick Find --> Type "Objects" --> Create --> Objects
+6. *While creating a new Object,  Record Name = Sid, Data Type = Auto Number, 
+    Display Format = sid-{00000}, Starting Number = 1
+
+7. Select ALL Optional Features, Choose *Allow Search
+8. **Select checkbox "Launch New Custom Tab Wizard after saving this custom object"
+
+In Fields, to select a checkbox, Select "Picklist" DataType and Select "Enter values with
+each value separated by a new line."
+
+To Calculate Age from DOB, Select "Formula" DataType
+
+
+
+
