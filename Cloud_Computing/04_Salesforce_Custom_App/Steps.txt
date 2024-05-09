@@ -20,6 +20,8 @@ each value separated by a new line."
 
 To Calculate Age from DOB, Select "Formula" DataType
 
+Eligibility: IF (Age__c > 18, TRUE, FALSE)
+
 
 
 

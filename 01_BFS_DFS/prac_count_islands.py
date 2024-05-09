@@ -26,7 +26,7 @@ def BFS(matrix, visited, sx, sy):
     visited[sx][sy] = True
 
     while q:
-        temp = q.pop()
+        temp = q.pop(0)
         x, y = temp[0], temp[1]
 
         for i in range(8):

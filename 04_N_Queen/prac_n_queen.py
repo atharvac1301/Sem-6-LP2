@@ -4,11 +4,11 @@ n = 4
 def display(board):
     for row in board:
         print(row)
-    print("\n\n")
+    print("\n")
 
 def isSafe(board, row, col):
 
-    for k in range(n):
+    for k in range(row):
         if board[k][col] == 1:
             return False
     
